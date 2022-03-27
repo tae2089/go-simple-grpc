@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+
+//https://developers.google.com/protocol-buffers/docs/reference/go-generated#singular-scalar-proto3
+
+/*
+In order to generate Go code, Go package's import path must be provided for every .proto file.
+Two ways to specify the Go import path
+(1) Declaring it within the .proto
+(2) Declaring it on the cli when invoking protoc
+*/
+
+// (1) declaring it in this chat.proto file
+option go_package = "./";
+
+package chat;
+
+message Message {
+  string body = 1;
+}
+
+service ChatService {
+  rpc sayHello(Message) returns (Message) {}
+}
